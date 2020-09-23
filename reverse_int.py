@@ -21,11 +21,14 @@ class Solution:
         char_lst.reverse()
         reversed_str = reversed_str.join(char_lst).strip('0')
         
-        
-        if negative == True: 
-            return -1*int(reversed_str)
+        integer = int(reversed_str)
+        if integer < (2**31 -1) and integer > (-2**31):
+            if negative == True: 
+                return -1*int(reversed_str)
+            else: 
+                return int(reversed_str)
         else: 
-            return int(reversed_str)
+            return 0
         
         
         
