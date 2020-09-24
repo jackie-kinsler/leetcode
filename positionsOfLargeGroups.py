@@ -47,6 +47,9 @@ class Solution:
                     group += 1
                 else: 
                     break
+                if group >= 3 and len(char_lst) == 1:
+                    char_lst.pop()
+                    break
             return group
 
         while len(char_lst) > 1:
