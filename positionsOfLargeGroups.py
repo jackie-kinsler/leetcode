@@ -52,9 +52,9 @@ class Solution:
         while len(char_lst) > 1:
             group = check_group_length(char_lst)
             if group >= 3:
-                index_lst.append("found one")
+                index_lst.append([len(char_lst), len(char_lst) + group - 1])
         
-        return index_lst 
+        return sorted(index_lst)
 
 
 
