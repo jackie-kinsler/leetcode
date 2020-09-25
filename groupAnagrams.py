@@ -4,6 +4,7 @@
 
 def groupAnagrams(strs):
     
+    final_list = []
     anagram_list = []
     word_dictionary = {}
     
@@ -29,7 +30,15 @@ def groupAnagrams(strs):
                 intermediate_list.append(word)
         anagram_list.append(intermediate_list)
     
-    print(anagram_list)
+    anagram_tuple_list = []
+
+    for group in anagram_list: 
+        anagram_tuple_list.append(tuple(group))
+    
+    for group in list(set(anagram_tuple_list)):
+        final_list.append(list(group))
+    
+    return final_list
 
 
 
