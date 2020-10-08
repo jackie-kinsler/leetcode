@@ -1,9 +1,20 @@
 
-
-
+# NEED TO REWRITE WITH KEYS BEING LETTER LISTS AND VALUES BEING WORDS 
 
 def groupAnagrams(strs):
-    
+    """Returns list of index positions of large groups.
+        >>> groupAnagrams(["eat","tea","tan","ate","nat","bat"])
+        [['bat'], ['eat', 'tea', 'ate'], ['tan', 'nat']]
+        >>> groupAnagrams(["",""])
+        [['','']]
+        >>> groupAnagrams([""])
+        [['']]
+       
+    """
+
+    if len(strs) <= 1: 
+        return [strs]
+
     final_list = []
     anagram_list = []
     word_dictionary = {}
@@ -14,15 +25,6 @@ def groupAnagrams(strs):
             letter_dict[char] = letter_dict.get(char, 0) + 1
         word_dictionary[word] = letter_dict
         
-    print(word_dictionary)
-    # {
-    # 'eat': {'e': 1, 'a': 1, 't': 1}, 
-    # 'tea': {'t': 1, 'e': 1, 'a': 1}, 
-    # 'tan': {'t': 1, 'a': 1, 'n': 1}, 
-    # 'ate': {'a': 1, 't': 1, 'e': 1}, 
-    # 'nat': {'n': 1, 'a': 1, 't': 1}, 
-    # 'bat': {'b': 1, 'a': 1, 't': 1}
-    # }
     for key in word_dictionary:
         intermediate_list = []
         for word, letters in word_dictionary.items(): 
@@ -38,22 +40,14 @@ def groupAnagrams(strs):
     for group in list(set(anagram_tuple_list)):
         final_list.append(list(group))
     
-    return final_list
+    return sorted(final_list)
 
 
+if __name__ == '__main__':
+    import doctest
 
-
-
-    #  """Returns list of index positions of large groups.
-    #     >>>groupAnagrams(["eat","tea","tan","ate","nat","bat"])
-    #     [["bat"],["nat","tan"],["ate","eat","tea"]]
-       
-    # """
-# if __name__ == '__main__':
-#     import doctest
-
-#     result = doctest.testmod()
-#     if result.failed == 0:
-#         print('ALL TESTS PASSED')
+    result = doctest.testmod()
+    if result.failed == 0:
+        print('ALL TESTS PASSED')
         
             
