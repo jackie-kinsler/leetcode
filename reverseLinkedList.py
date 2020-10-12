@@ -11,12 +11,14 @@ def reverseList(head):
     if head.next == None:
         return 
     
-    current = head  
-    next_node = head.next
-    current.next = None
-    next_node.next = current
+    prev = None
+    current = head
+    while current != None: 
+        next = current.next
+        current.next = prev
+        prev = current
+        current = next
 
-    current = next_node
 
 def printList(head):
     node_list = []
@@ -42,6 +44,7 @@ c.next = d
 d.next = e
 
 printList(a)
+reverseList(a)
 printList(e)
 
 # print([a.val, b.val, c.val, d.val, e.val])
